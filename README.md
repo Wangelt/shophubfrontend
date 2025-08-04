@@ -34,4 +34,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## For Developers 
    I have added an example Redux slice (exampleSlice.js) in src/store/slices/ for testing and learning. Feel free to use it to practice Redux actions and state updates before creating your feature-specific slices.
    
-     
+     Created a custom 404 page to guide users who access invalid URLs.
+
+Built a dedicated Redux provider to ensure stable and efficient state management.
+
+Integrated next/link to improve navigation speed through data prefetching .
