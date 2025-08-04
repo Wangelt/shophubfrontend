@@ -1,4 +1,3 @@
-// services/authService.js
 import Axios from "../lib/axios";
 import ENDPOINTS from "../lib/apiConfig";
 
