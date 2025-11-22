@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Search, Filter, X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import Image from 'next/image';
@@ -21,7 +21,7 @@ const formatCurrency = (value) =>
     maximumFractionDigits: 0,
   }).format(value ?? 0);
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
@@ -352,6 +352,18 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen page-gradient flex items-center justify-center">
+        <Loader2 className="size-8 animate-spin text-[#FFCBD8]" />
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
   );
 }
 
