@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { baseURL } from '@/lib/apiConfig';
 
 export default function TestUpload() {
   const [status, setStatus] = useState('');
@@ -36,7 +37,7 @@ export default function TestUpload() {
     addLog('📤 Sending request to /api/v1/admin/upload');
     
     try {
-      const response = await fetch('http://localhost:5000/api/v1/admin/upload', {
+      const response = await fetch(`${baseURL}/admin/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

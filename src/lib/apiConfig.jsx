@@ -1,4 +1,22 @@
-export const baseURL=process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
+// Get API URL from environment variable or use defaults based on environment
+const getBaseURL = () => {
+  // If environment variable is set, use it
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  
+  // For client-side, check if we're on localhost
+  if (typeof window !== 'undefined') {
+    return window.location.hostname === 'localhost' 
+      ? "http://localhost:5000/api/v1" 
+      : "https://shophubbackend.vercel.app/api/v1";
+  }
+  
+  // For server-side, default to production
+  return "https://shophubbackend.vercel.app/api/v1";
+};
+
+export const baseURL = getBaseURL();
 
 const ENDPOINTS=   {
     auth:{
