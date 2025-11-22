@@ -1,6 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "./storeprovider";
+import { Toaster } from "react-hot-toast";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import CartInitializer from "@/components/CartInitializer";
+import AuthInitializer from "@/components/AuthInitializer";
+import PageTransition from "@/components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,12 +25,46 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
+        
         <StoreProvider>
-          {children}
+          <AuthInitializer />
+          <CartInitializer />
+          <Header />
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: '#fff',
+                color: '#1a1a1a',
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                padding: '12px 16px',
+              },
+              success: {
+                iconTheme: {
+                  primary: '#FFCBD8',
+                  secondary: '#fff',
+                },
+              },
+              error: {
+                iconTheme: {
+                  primary: '#ef4444',
+                  secondary: '#fff',
+                },
+              },
+            }}
+          />
+
+          <PageTransition>
+            {children}
+          </PageTransition>
+          <Footer/>
           </StoreProvider>
       </body>
     </html>

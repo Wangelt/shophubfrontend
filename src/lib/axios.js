@@ -44,7 +44,9 @@ Axios.interceptors.response.use(
 const refreshAccessToken = async (refreshToken) => {
   try {
     const response = await axios({
-      ...ENDPOINTS.refresh_token,
+      baseURL,
+      url: ENDPOINTS.auth.refreshToken.url,
+      method: ENDPOINTS.auth.refreshToken.method,
       headers: {
         Authorization: `Bearer ${refreshToken}`,
       },

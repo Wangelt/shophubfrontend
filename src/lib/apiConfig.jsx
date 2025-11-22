@@ -1,19 +1,291 @@
-export const baseURL=process.env.NEXT_PUBLIC_API_URL
+export const baseURL=process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
 
 const ENDPOINTS=   {
-    register:{
-        url:"/users/register",
-        method: "get"
+    auth:{
+        register:{
+            url:"/auth/register",
+            method: "post"
+        },
+        login:{
+            url:"/auth/login",
+            method: "post"
+        },
+        refreshToken:{
+            url:"/auth/refresh",
+            method: "post"
+        },
+        forgotPassword:{
+            url:"/auth/forgot-password",
+            method: "post"
+        },
+        verifyOTP:{
+            url:"/auth/verify-otp",
+            method: "post"
+        },
+        resetPassword:{
+            url:"/auth/reset-password",
+            method: "post"
+        },
+        logout:{
+            url:"/auth/logout",
+            method: "post"
+        },
+        aboutme:{
+            url:"/auth/me",
+            method: "get"
+        },
+        adminLogin:{
+            url:"/auth/admin/login",
+            method: "post"
+        }
     },
-    login:{
-         url:"users/login",
-         method: "post"
+    user:{
+        getProfile:{
+            url:"/users/profile",
+            method:"get"
+        },
+        updateProfile:{
+            url:"/users/profile",
+            method:"put"
+        },
+        updatePassword:{
+            url:"/users/password",
+            method:"put"
+        },
+        updateAddress:{
+            url:"/users/address",
+            method:"put"
+        },
+        deleteAccount:{
+            url:"/users/account",
+            method:"delete"
+        }
     },
-    getUser:{
-        url:"/users/userdetails",
-        method:"get"
+    products:{
+        getAll:{
+            url:"/products",
+            method:"get"
+        },
+        getById:{
+            url:"/products/:id",
+            method:"get"
+        }
+    },
+    categories:{
+        getAll:{
+            url:"/categories",
+            method:"get"
+        },
+        getById:{
+            url:"/categories/:id",
+            method:"get"
+        }
+    },
+    subcategories:{
+        getAll:{
+            url:"/subcategories",
+            method:"get"
+        },
+        getById:{
+            url:"/subcategories/:id",
+            method:"get"
+        }
+    },
+    orders:{
+        create:{
+            url:"/orders",
+            method:"post"
+        },
+        getMyOrders:{
+            url:"/orders/my-orders",
+            method:"get"
+        },
+        getById:{
+            url:"/orders/:id",
+            method:"get"
+        },
+        pay:{
+            url:"/orders/:id/pay",
+            method:"put"
+        },
+        cancel:{
+            url:"/orders/:id/cancel",
+            method:"put"
+        }
+    },
+    addresses:{
+        getAll:{
+            url:"/addresses",
+            method:"get"
+        },
+        getById:{
+            url:"/addresses/:id",
+            method:"get"
+        },
+        create:{
+            url:"/addresses",
+            method:"post"
+        },
+        update:{
+            url:"/addresses/:id",
+            method:"put"
+        },
+        delete:{
+            url:"/addresses/:id",
+            method:"delete"
+        },
+        setDefault:{
+            url:"/addresses/:id/default",
+            method:"put"
+        }
+    },
+    cart:{
+        get:{
+            url:"/cart",
+            method:"get"
+        },
+        addItem:{
+            url:"/cart/items",
+            method:"post"
+        },
+        updateItem:{
+            url:"/cart/items/:productId",
+            method:"patch"
+        },
+        removeItem:{
+            url:"/cart/items/:productId",
+            method:"delete"
+        },
+        clear:{
+            url:"/cart",
+            method:"delete"
+        }
+    },
+    admin:{
+        // Dashboard
+        dashboard:{
+            url:"/admin/dashboard",
+            method:"get"
+        },
+        // Categories
+        categories:{
+            getAll:{
+                url:"/admin/categories",
+                method:"get"
+            },
+            getById:{
+                url:"/admin/categories/:id",
+                method:"get"
+            },
+            create:{
+                url:"/admin/categories",
+                method:"post"
+            },
+            update:{
+                url:"/admin/categories/:id",
+                method:"put"
+            },
+            delete:{
+                url:"/admin/categories/:id",
+                method:"delete"
+            }
+        },
+        // SubCategories
+        subcategories:{
+            getAll:{
+                url:"/admin/subcategories",
+                method:"get"
+            },
+            getById:{
+                url:"/admin/subcategories/:id",
+                method:"get"
+            },
+            create:{
+                url:"/admin/subcategories",
+                method:"post"
+            },
+            update:{
+                url:"/admin/subcategories/:id",
+                method:"put"
+            },
+            delete:{
+                url:"/admin/subcategories/:id",
+                method:"delete"
+            }
+        },
+        // Products
+        products:{
+            getAll:{
+                url:"/admin/products",
+                method:"get"
+            },
+            create:{
+                url:"/admin/products",
+                method:"post"
+            },
+            update:{
+                url:"/admin/products/:id",
+                method:"put"
+            },
+            delete:{
+                url:"/admin/products/:id",
+                method:"delete"
+            },
+            toggleFeatured:{
+                url:"/admin/products/:id/featured",
+                method:"patch"
+            },
+            updateStock:{
+                url:"/admin/products/:id/stock",
+                method:"patch"
+            }
+        },
+        // Users
+        users:{
+            getAll:{
+                url:"/admin/users",
+                method:"get"
+            },
+            getById:{
+                url:"/admin/users/:id",
+                method:"get"
+            },
+            update:{
+                url:"/admin/users/:id",
+                method:"put"
+            },
+            delete:{
+                url:"/admin/users/:id",
+                method:"delete"
+            }
+        },
+        // Orders
+        orders:{
+            getAll:{
+                url:"/admin/orders",
+                method:"get"
+            },
+            updateStatus:{
+                url:"/orders/:id/status",
+                method:"put"
+            }
+        },
+        // Upload
+        upload:{
+            single:{
+                url:"/admin/upload",
+                method:"post"
+            },
+            multiple:{
+                url:"/admin/upload/multiple",
+                method:"post"
+            },
+            delete:{
+                url:"/admin/upload",
+                method:"delete"
+            }
+        }
     }
-   
 }   
 
 export default ENDPOINTS
