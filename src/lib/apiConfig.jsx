@@ -303,6 +303,24 @@ const ENDPOINTS=   {
                 method:"delete"
             }
         }
+    },
+    chatbot:{
+        chat:{
+            url:"/chatbot",
+            method:"post"
+        },
+        getConversation:{
+            url:"/chatbot/:sessionId",
+            method:"get"
+        },
+        getUserConversations:{
+            url:"/chatbot/user/:userId",
+            method:"get"
+        },
+        deleteConversation:{
+            url:"/chatbot/:sessionId",
+            method:"delete"
+        }
     }
 }   
 

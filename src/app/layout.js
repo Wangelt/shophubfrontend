@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import CartInitializer from "@/components/CartInitializer";
 import AuthInitializer from "@/components/AuthInitializer";
 import PageTransition from "@/components/PageTransition";
+import Chatbot from "@/components/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
             {children}
           </PageTransition>
           <Footer/>
+          <Chatbot />
           </StoreProvider>
       </body>
     </html>
